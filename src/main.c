@@ -86,7 +86,6 @@ int		main(void)
 	EXIT_VALUE = FALSE;
 	while (!EXIT_VALUE)
 	{
-		system("cls");
 		system("clear");
 //		ft_printf("winrate vs random : %f%%\n", (double)win / ((double)win + (double)lose) * 100);
 //		ft_printf("winrate vs another IA : %f%%\n", (double)win3 / ((double)win3 + (double)lose3) * 100);

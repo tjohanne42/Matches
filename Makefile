@@ -23,14 +23,20 @@ OBJ = $(SRC:.c=.o)
 all: $(NAME)
 
 $(NAME):
-	@ $(CC) $(addprefix src/, $(SRC)) -I inc -Llib -lftprintf -o bin/$(NAME)
+	@ make -C lib/ft_printf
+	@ $(CC) $(addprefix src/, $(SRC)) -I inc lib/ft_printf/libftprintf.a -o bin/$(NAME)
 	@ echo -e "\033[0m==\tCompilation $(NAME)\t\t\033[1;32mDONE$(C_STANDART)"
 
-clean:
-	@ rm -f bin/$(NAME)
+clean :
+	@ make clean -C lib/ft_printf
 	@ echo -e "\033[0m==\tClean $(NAME)\t\t\t\033[1;32mDONE$(C_STANDART)"
 
-re: clean all
+fclean :
+	@ make fclean -C lib/ft_printf
+	@ rm -f bin/$(NAME)
+	@ echo -e "\033[0m==\tFclean $(NAME)\t\t\t\033[1;32mDONE$(C_STANDART)"
+
+re: fclean all
 
 test: re
 	./bin/$(NAME)
